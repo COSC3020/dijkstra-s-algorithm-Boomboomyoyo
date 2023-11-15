@@ -20,3 +20,14 @@ to be the most efficient one!
 
 What is the big $\Theta$ complexity of your implementation? Add your
 answer, including your reasoning, to this markdown file.
+
+# Response
+
+## Runtime Analysis
+
+## References
+Decided to just use a priority queue library rather than implement my own, so I can work on the part I'm actually interested in
+https://github.com/datastructures-js/priority-queue#import
+
+On how to actually use an outside library in JavaScript
+https://stackoverflow.com/questions/61298183/syntax-error-cannot-use-import-statement-outside-a-module
