@@ -22,8 +22,18 @@ What is the big $\Theta$ complexity of your implementation? Add your
 answer, including your reasoning, to this markdown file.
 
 # Response
+This was fun. I racked my head for a while trying to figure out to use a priority queue in this, but couldn't come up with a good solution.
 
 ## Runtime Analysis
+For my implementation, these are the steps I take.
+1. Initialize two arrays which keep track of the nodes that have been processed and the distance from the source node to each node. This has a linear runtime proportional to the node count of $|V|$
+2. While there are nodes that haven't been processed in the graph, run steps 3 through 5. This has a runtime equal to the number of nodes, $|V|$.
+3. Find the next unprocessed node with the smallest distance from the source node. This also has a linear runtime proportional to the node count, $|V|$.
+4. For each possible edge connected to the node being processed, check if it is an edge and if it would result in a shorter distance to the other node it connects to. Update the distances array accordingly. This has a runtime equal to the number of nodes, $|V|$, since this is an adjacency matrix representation.
+5. Mark the node as processed. This is constant time.
+6. The shortest distance from the source node has been found for all other nodes. Return this. This is constant time.
+
+So, the overall complexity is $|V| + |V|*(|V|+|V|) = |V| + 2|V^2| = \Theta\left(|V^2|\right)$
 
 ## References
 Decided to just use a priority queue library rather than implement my own, so I can work on the part I'm actually interested in.
@@ -35,3 +45,6 @@ https://stackoverflow.com/questions/61298183/syntax-error-cannot-use-import-stat
 
 Provided the outside code I tweaked to create my property tests. Thankfully, it didn't take me long to find another implementation of Dijsktra's using outside code I could test against.
 https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+
+Syntax for JavaScript's map function. So useful, now that I know it exists
+https://www.freecodecamp.org/news/higher-order-functions-in-javascript-d9101f9cf528/
