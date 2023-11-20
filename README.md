@@ -26,8 +26,12 @@ answer, including your reasoning, to this markdown file.
 ## Runtime Analysis
 
 ## References
-Decided to just use a priority queue library rather than implement my own, so I can work on the part I'm actually interested in
+Decided to just use a priority queue library rather than implement my own, so I can work on the part I'm actually interested in.
+Didn't actually end up using this. I was unable to find a good way to change the values in the priority queue, so I resorted to just scanning through the list of all nodes each time I select a new node to process.
 https://github.com/datastructures-js/priority-queue#import
 
 On how to actually use an outside library in JavaScript
 https://stackoverflow.com/questions/61298183/syntax-error-cannot-use-import-statement-outside-a-module
+
+Provided the outside code I tweaked to create my property tests. Thankfully, it didn't take me long to find another implementation of Dijsktra's using outside code I could test against.
+https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
