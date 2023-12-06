@@ -1,6 +1,6 @@
 //const pq = require('@datastructures-js/priority-queue');
 
-function dijkstra(graph, sourceNode, visitedNodes = [], distance = []) {
+function dijkstra(graph, sourceNode, unvisitedNodes = [], distance = []) {
     // Initialize distances, with sourceNode's distance being 0 and all other nodes being infinity
     for(i = 0; i < graph.length; i++)
     {
@@ -11,7 +11,7 @@ function dijkstra(graph, sourceNode, visitedNodes = [], distance = []) {
         {
             distance[i] = [0, i]
         }
-        visitedNodes[i] = false
+        unvisitedNodes.push(i)
     }
     processedNodes = 0
 
@@ -19,15 +19,22 @@ function dijkstra(graph, sourceNode, visitedNodes = [], distance = []) {
     while(processedNodes < graph.length)
     {
         // Default value for comparison. Useful as an error code
-        next = [Infinity, -1]
+        //next = [Infinity, -1]
         // Select unmarked node with lowest distance to process
+        /*
         for(i = 0; i < graph.length; i++)
         {
             if(visitedNodes[i] == false && distance[i][0] < next[0])
             {
                 next = [distance[i][0], i]
             }
-        }
+        }*/
+        unvisitedNodes.sort(function(a,b) {
+            return distance[b][0] - distance[a][0]
+        })
+        nextIndex = unvisitedNodes.pop()
+        next = [distance[nextIndex][0], nextIndex]
+
         // Ensure a node has actually been selected. Was useful as error testing, no longer needed.
         //if(next[1] != -1)
         //{
@@ -42,7 +49,7 @@ function dijkstra(graph, sourceNode, visitedNodes = [], distance = []) {
             }
         //}
         processedNodes++
-        visitedNodes[next[1]] = true   
+        //visitedNodes[next[1]] = true   
     }
     // Once all nodes have been processed, the result is the final array. Return the result
     return distance
